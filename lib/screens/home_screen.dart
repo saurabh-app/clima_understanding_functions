@@ -29,8 +29,6 @@ if(mounted){
     double lat = location.latitude;
     double lon = location.longitude;
     var apiKey = "f2ba5b65a489fd4cdd5d0a352284a03b";
-  //   var apiUrl ="https://api.openweathermap.org/data/3.0/onecall?lat={lat}&lon={lon}&exclude={part}&appid={API key}";
-//print(apiUrl);
     var url = Uri.https('api.openweathermap.org', 'data/2.5/weather', {
       'lat': lat.toString(),
       'lon': lon.toString(),
@@ -43,7 +41,14 @@ if(mounted){
     if (response.statusCode == 200) {
       var data = jsonDecode(response.body);
       print(data);
-      Navigator.push(context, MaterialPageRoute(builder: (_)=>Screen1() ));
+     // Navigator.push(context, MaterialPageRoute(builder: (_)=>Screen1() ));
+
+     Navigator.push(
+  context,
+  MaterialPageRoute(
+    builder: (_) => Screen1(weatherdata: data),
+  ),
+);
     }
   }
 
